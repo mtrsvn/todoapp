@@ -5,9 +5,11 @@ import {
   deleteDoc,
   doc,
   getDocs,
+  onSnapshot,
   orderBy,
   query,
   updateDoc,
+  writeBatch,
 } from "firebase/firestore";
 import { Todo } from "../types/todo";
 import { db } from "./firebaseconfig";
@@ -27,6 +29,26 @@ export const getTodos = async (): Promise<
       createdAt: data.createdAt ?? 0,
     };
   });
+};
+
+// Subscribe to real-time updates
+export const subscribeToTodos = (
+  onUpdate: (todos: Array<Todo & { id: string; createdAt: number }>) => void,
+) => {
+  const q = query(collection(db, "todos"), orderBy("createdAt", "desc"));
+  const unsubscribe = onSnapshot(q, (snapshot) => {
+    const data = snapshot.docs.map((doc) => {
+      const d = doc.data();
+      return {
+        id: doc.id,
+        text: d.text ?? "",
+        isCompleted: d.isCompleted ?? false,
+        createdAt: d.createdAt ?? 0,
+      };
+    });
+    onUpdate(data);
+  });
+  return unsubscribe;
 };
 
 // Add a todo
@@ -63,10 +85,8 @@ export const deleteTodo = async (id: string): Promise<void> => {
 // Clear all todos
 export const clearAllTodos = async (): Promise<{ deletedCount: number }> => {
   const snapshot = await getDocs(collection(db, "todos"));
-  let deletedCount = 0;
-  for (const d of snapshot.docs) {
-    await deleteDoc(doc(db, "todos", d.id));
-    deletedCount++;
-  }
-  return { deletedCount };
+  const batch = writeBatch(db);
+  snapshot.docs.forEach((d) => batch.delete(doc(db, "todos", d.id)));
+  await batch.commit();
+  return { deletedCount: snapshot.docs.length };
 };
