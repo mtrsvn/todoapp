@@ -1,12 +1,15 @@
-import { StyleSheet, Text, View } from "react-native";
+import useTheme from "@/hooks/useTheme";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function Index() {
+  const { toggleDarkMode } = useTheme();
   return (
     <View style={styles.container}>
-      <Text style={[styles.content, { color: "#ffffff" }]}>Hello World</Text>
-      <Text style={[styles.secondary, { color: "#ffffff" }]}>
-        Made with React Native Expo
-      </Text>
+      <Text style={[styles.content]}>Hello World</Text>
+      <Text style={[styles.secondary]}>Made with React Native Expo</Text>
+      <TouchableOpacity onPress={toggleDarkMode}>
+        <Text>Toggle Dark Mode</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -16,7 +19,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#1c1d1e",
     gap: 10,
   },
   content: {
