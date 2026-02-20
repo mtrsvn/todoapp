@@ -2,8 +2,8 @@ import { createSettingsStyles } from "@/assets/settings.styles";
 import { subscribeToTodos } from "@/firebase/todoService";
 import useTheme from "@/hooks/useTheme";
 import { Todo } from "@/types/todo";
-import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import { CheckCircle, Clock, List } from "lucide-react-native";
 import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 
@@ -44,7 +44,7 @@ const ProgressStats = () => {
               colors={colors.gradients.primary}
               style={settingsStyles.statIcon}
             >
-              <Ionicons name="list" size={20} color="#fff" />
+              <List size={20} color="#fff" />
             </LinearGradient>
           </View>
 
@@ -64,7 +64,7 @@ const ProgressStats = () => {
               colors={colors.gradients.success}
               style={settingsStyles.statIcon}
             >
-              <Ionicons name="checkmark-circle" size={20} color="#fff" />
+              <CheckCircle size={20} color="#fff" />
             </LinearGradient>
           </View>
 
@@ -85,7 +85,7 @@ const ProgressStats = () => {
               colors={colors.gradients.warning}
               style={settingsStyles.statIcon}
             >
-              <Ionicons name="time" size={20} color="#fff" />
+              <Clock size={20} color="#fff" />
             </LinearGradient>
           </View>
 

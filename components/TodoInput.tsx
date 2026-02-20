@@ -1,8 +1,8 @@
 import { createHomeStyles } from "@/assets/home.styles";
 import { addTodo as addTodoService } from "@/firebase/todoService";
 import useTheme from "@/hooks/useTheme";
-import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import { Plus } from "lucide-react-native";
 import { useState } from "react";
 import { Alert, TextInput, TouchableOpacity, View } from "react-native";
 
@@ -49,7 +49,7 @@ const TodoInput = () => {
               !newTodo.trim() && homeStyles.addButtonDisabled,
             ]}
           >
-            <Ionicons name="add" size={24} color="#ffffff" />
+            <Plus size={24} color="#ffffff" />
           </LinearGradient>
         </TouchableOpacity>
       </View>

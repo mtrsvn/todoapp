@@ -3,8 +3,8 @@ import DangerZone from "@/components/DangerZone";
 import Preferences from "@/components/Preferences";
 import ProgressStats from "@/components/ProgressStats";
 import useTheme from "@/hooks/useTheme";
-import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import { Settings } from "lucide-react-native";
 
 import { ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -27,7 +27,7 @@ const SettingsScreen = () => {
               colors={colors.gradients.primary}
               style={settingsStyles.iconContainer}
             >
-              <Ionicons name="settings" size={28} color="#ffffff" />
+              <Settings size={28} color="#ffffff" />
             </LinearGradient>
             <Text style={settingsStyles.title}>Settings</Text>
           </View>

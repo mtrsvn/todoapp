@@ -1,15 +1,15 @@
 // firebase/todoService.js
 import {
-  addDoc,
-  collection,
-  deleteDoc,
-  doc,
-  getDocs,
-  onSnapshot,
-  orderBy,
-  query,
-  updateDoc,
-  writeBatch,
+    addDoc,
+    collection,
+    deleteDoc,
+    doc,
+    getDocs,
+    onSnapshot,
+    orderBy,
+    query,
+    updateDoc,
+    writeBatch,
 } from "firebase/firestore";
 import { Todo } from "../types/todo";
 import { db } from "./firebaseconfig";
@@ -89,4 +89,19 @@ export const clearAllTodos = async (): Promise<{ deletedCount: number }> => {
   snapshot.docs.forEach((d) => batch.delete(doc(db, "todos", d.id)));
   await batch.commit();
   return { deletedCount: snapshot.docs.length };
+};
+
+// Reorder todos by updating their createdAt timestamps in a batch.
+// `orderedIds` should be an array of todo ids in the new desired order (first = top).
+export const reorderTodos = async (orderedIds: string[]): Promise<void> => {
+  const batch = writeBatch(db);
+  const now = Date.now();
+  // Assign decreasing timestamps so the first item is newest (highest createdAt)
+  for (let i = 0; i < orderedIds.length; i++) {
+    const id = orderedIds[i];
+    const todoRef = doc(db, "todos", id);
+    const createdAt = now - i; // simple decreasing value
+    batch.update(todoRef, { createdAt });
+  }
+  await batch.commit();
 };

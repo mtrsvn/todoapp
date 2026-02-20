@@ -1,7 +1,7 @@
 import { createSettingsStyles } from "@/assets/settings.styles";
 import useTheme from "@/hooks/useTheme";
-import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import { Bell, Moon } from "lucide-react-native";
 import { useState } from "react";
 import { Switch, Text, View } from "react-native";
 
@@ -27,7 +27,7 @@ const Preferences = () => {
             colors={colors.gradients.primary}
             style={settingsStyles.settingIcon}
           >
-            <Ionicons name="moon" size={18} color="#fff" />
+            <Moon size={18} color="#fff" />
           </LinearGradient>
           <Text style={settingsStyles.settingText}>Dark Mode</Text>
         </View>
@@ -47,7 +47,7 @@ const Preferences = () => {
             colors={colors.gradients.warning}
             style={settingsStyles.settingIcon}
           >
-            <Ionicons name="notifications" size={18} color="#fff" />
+            <Bell size={18} color="#fff" />
           </LinearGradient>
           <Text style={settingsStyles.settingText}>Notifications</Text>
         </View>
@@ -69,7 +69,7 @@ const Preferences = () => {
             colors={colors.gradients.success}
             style={settingsStyles.settingIcon}
           >
-            <Ionicons name="notifications" size={18} color="#fff" />
+            <Bell size={18} color="#fff" />
           </LinearGradient>
           <Text style={settingsStyles.settingText}>Auto Sync</Text>
         </View>

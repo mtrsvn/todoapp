@@ -1,6 +1,6 @@
 import useTheme from "@/hooks/useTheme";
-import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
+import { Settings, Zap } from "lucide-react-native";
 
 const TabsLayout = () => {
   const { colors } = useTheme();
@@ -29,9 +29,7 @@ const TabsLayout = () => {
         name="index"
         options={{
           title: "Todos",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="flash-outline" size={size} color={color} />
-          ),
+          tabBarIcon: ({ color, size }) => <Zap size={size} color={color} />,
         }}
       />
       <Tabs.Screen
@@ -39,7 +37,7 @@ const TabsLayout = () => {
         options={{
           title: "Settings",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="settings" size={size} color={color} />
+            <Settings size={size} color={color} />
           ),
         }}
       />

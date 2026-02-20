@@ -1,8 +1,8 @@
 import { createSettingsStyles } from "@/assets/settings.styles";
 import { clearAllTodos } from "@/firebase/todoService";
 import useTheme from "@/hooks/useTheme";
-import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import { ChevronRight, Trash } from "lucide-react-native";
 import { Alert, Text, TouchableOpacity, View } from "react-native";
 
 const DangerZone = () => {
@@ -53,11 +53,11 @@ const DangerZone = () => {
             colors={colors.gradients.danger}
             style={settingsStyles.actionIcon}
           >
-            <Ionicons name="trash" size={18} color="#ffffff" />
+            <Trash size={18} color="#ffffff" />
           </LinearGradient>
           <Text style={settingsStyles.actionTextDanger}>Reset App</Text>
         </View>
-        <Ionicons name="chevron-forward" size={18} color={colors.textMuted} />
+        <ChevronRight size={18} color={colors.textMuted} />
       </TouchableOpacity>
     </LinearGradient>
   );

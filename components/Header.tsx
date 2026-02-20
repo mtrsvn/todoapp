@@ -2,8 +2,8 @@ import { createHomeStyles } from "@/assets/home.styles";
 import { subscribeToTodos } from "@/firebase/todoService"; // <- Firebase service (realtime)
 import useTheme from "@/hooks/useTheme";
 import { Todo } from "@/types/todo";
-import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import { Zap } from "lucide-react-native";
 import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 
@@ -34,7 +34,7 @@ const Header = () => {
           colors={colors.gradients.primary}
           style={homeStyles.iconContainer}
         >
-          <Ionicons name="flash-outline" size={28} color="#fff" />
+          <Zap size={28} color="#fff" />
         </LinearGradient>
 
         <View style={homeStyles.titleTextContainer}>
