@@ -1,15 +1,15 @@
 // firebase/todoService.js
 import {
-    addDoc,
-    collection,
-    deleteDoc,
-    doc,
-    getDocs,
-    onSnapshot,
-    orderBy,
-    query,
-    updateDoc,
-    writeBatch,
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  onSnapshot,
+  orderBy,
+  query,
+  updateDoc,
+  writeBatch,
 } from "firebase/firestore";
 import { Todo } from "../types/todo";
 import { db } from "./firebaseconfig";
